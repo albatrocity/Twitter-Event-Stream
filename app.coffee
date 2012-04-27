@@ -22,10 +22,10 @@ app.configure ->
 	app.set 'view engine', 'jade'
 
 twat = new twitter
-	consumer_key 		: 'VBXglJ5cEIj1NkbIHt5g'
-	consumer_secret		: 'dq39fyzSeh7YDBpuO61GnQzP6vy0SBvwleDv6JDiQ'
-	access_token_key	: '564015834-rkdVOU6zybXxPBlyN8Bp8EprA6pBZ6XLoRz8e9Z4'
-	access_token_secret	: '1lDDCDP7AtyFPUCdXTMJR7CfCOLjCDRszCEJcd6WzI'
+	consumer_key 		: process.env.TWITTERCONSUMERKEY
+	consumer_secret		: process.env.TWITTERCONSUMERSECRET
+	access_token_key	: process.env.TWITTERACCESSTOKEN
+	access_token_secret	: process.env.TWITTERACCESSTOKENSECRET
 
 io.sockets.on 'connection', (socket) ->
 	twat.stream 'statuses/filter',
