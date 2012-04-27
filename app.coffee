@@ -42,7 +42,8 @@ io.sockets.on 'connection', (socket) ->
 				data : client_data
 
 app.get '/', (req, res) ->
-	res.render 'index'
+	fs.readdir "#{__dirname}/public/sounds", (err, all_files) ->
+		res.render 'index', files : all_files
 
 app.listen port
 console.log 'server running on port ' + port 
