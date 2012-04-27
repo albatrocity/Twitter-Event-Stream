@@ -29,7 +29,7 @@ twat = new twitter
 
 io.sockets.on 'connection', (socket) ->
 	twat.stream 'statuses/filter',
-		track : 'fartcharade'
+		track : 'fart'
 	, (stream) ->
 		stream.on 'data', (data) ->
 			client_data = {
@@ -37,9 +37,8 @@ io.sockets.on 'connection', (socket) ->
 				img 	: data.user.profile_image_url_https
 				user 	: data.user.screen_name
 			}
-			console.log JSON.stringify client_data
 			socket.broadcast.emit 'new_fart',
-				data : client_data
+				client_data
 
 app.get '/', (req, res) ->
 	fs.readdir "#{__dirname}/public/sounds", (err, all_files) ->

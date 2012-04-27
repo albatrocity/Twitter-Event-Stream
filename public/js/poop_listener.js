@@ -16,9 +16,9 @@
     });
     return socket.on('new_fart', function(data) {
       var fart_sound, template;
-      template = "<li style='display:none;'><a target='_blank' href='http://twitter.com/" + data.username + "'>@" + data.username + "</a> : " + data.message + "</li>";
+      console.log(data);
+      template = "<li><a target='_blank' href='http://twitter.com/" + data.user + "'><img src='" + data.img + "' alt='@" + data.user + "' />@" + data.user + "</a> : " + data.content + "</li>";
       dom_farters.append(template);
-      $(template).fadeIn();
       fart_sound = '';
       if ($.inArray(data.sound, all_fart_sounds)) {
         fart_sound = file_path + data.sound + '.' + file_type;

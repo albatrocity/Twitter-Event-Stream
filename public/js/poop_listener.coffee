@@ -15,10 +15,9 @@ $ ->
 		all_fart_sounds.push $(@).text()
 
 	socket.on 'new_fart', (data) ->
-
-		template = "<li style='display:none;'><a target='_blank' href='http://twitter.com/#{data.username}'>@#{data.username}</a> : #{data.message}</li>"
+		console.log data
+		template = "<li><a target='_blank' href='http://twitter.com/#{data.user}'><img src='#{data.img}' alt='@#{data.user}' />@#{data.user}</a> : #{data.content}</li>"
 		dom_farters.append template
-		$(template).fadeIn()
 
 		fart_sound = ''
 		if $.inArray(data.sound, all_fart_sounds)
