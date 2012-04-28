@@ -8,6 +8,6 @@ Just tweet @FartCharade and listen to the website fart away. Sample:
 FartCharade comes with an impressive API. Attach any of the following hash tags to your tweet to specify the kind of fart you'd like to hear.
 
 * #MassiveButtFart
-* #SqueekyLibraryFart
+* #SqueakyLibraryFart
 * #PoolsideWetFart
 * #ChineseFirecracker
