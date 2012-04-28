@@ -54,12 +54,14 @@ build_tweet_stream = (req, res, next) ->
 				client_data.content.replace /[#]+[A-Za-z0-9-_]+/g, (tag) ->
 					client_data.tags.push tag.replace('#', '')
 
+				###
 				if req
 					socket.broadcast.emit 'my_fart',
 						client_data
-				else
-					socket.broadcast.emit 'new_fart',
-						client_data
+				###
+				#else
+				socket.broadcast.emit 'new_fart',
+					client_data
 
 get_all_files = (req, res, next) ->
 	fs.readdir "#{__dirname}/public/sounds", (err, all_files) ->
