@@ -2,7 +2,7 @@ socket = io.connect('/')
 
 $ ->
 	
-	default_sound 	= 'massive_butt_fart'
+	default_sound 	= 'song'
 	file_type 		= 'ogg'
 	file_path 		= '/sounds/'
 
@@ -15,12 +15,18 @@ $ ->
 		all_fart_sounds.push $(@).text()
 
 	socket.on 'new_fart', (data) ->
-		console.log data
-		template = "<li><a target='_blank' href='http://twitter.com/#{data.user}'><img src='#{data.img}' alt='@#{data.user}' />@#{data.user}</a> : #{data.content}</li>"
-		dom_farters.append template
+		build_fart data
+
+	socket.on 'my_fart', (data) ->
+		build_fart data
+
+	build_fart = (data) ->
+
+		template = "<li><a target='_blank' href='http://twitter.com/#{data.user}'><img src='#{data.img}' alt='@#{data.user}' /></a><a target='_blank' href='http://twitter.com/#{data.user}'>@#{data.user}</a> : #{data.content}</li>"
+		dom_farters.prepend template
 
 		fart_sound = ''
-		if $.inArray(data.sound, all_fart_sounds)
+		if $.inArray(data.tags[0], all_fart_sounds) != -1
 			fart_sound = file_path + data.sound + '.' + file_type
 		else
 			fart_sound = file_path + default_sound + '.' + file_type
