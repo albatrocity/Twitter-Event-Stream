@@ -1,14 +1,87 @@
+@-webkit-keyframes rumble 
+  0%
+  	left 10px
+  10%
+  	left -10px
+  	top -5px
+  30%
+  	left 6px
+  	top 12px
+  50%
+  	left -6px
+  	top -6px
+  70%  
+  	left 6px
+  	top 12px
+  90% 
+  	left -4px
+  	top -5px
+  100%
+  	left 0
+  	top 0
+
+@-moz-keyframes rumble
+  0%
+  	left 10px
+  10%
+  	left -10px
+  	top -5px
+  30%
+  	left 6px
+  	top 12px
+  50%
+  	left -6px
+  	top -6px
+  70%  
+  	left 6px
+  	top 12px
+  90% 
+  	left -4px
+  	top -5px
+  100%
+  	left 0
+  	top 0
+
+@-ms-keyframes rumble
+  0%
+  	left 10px
+  10%
+  	left -10px
+  	top -5px
+  30%
+  	left 6px
+  	top 12px
+  50%
+  	left -6px
+  	top -6px
+  70%  
+  	left 6px
+  	top 12px
+  90% 
+  	left -4px
+  	top -5px
+  100%
+  	left 0
+  	top 0
+
+
 body
-	padding							50px
+	padding								50px
 
 div.poop
 	display 							inline-block
-	width 							100%
-	height 							50px
+	width 								100%
+	height 								50px
 	background 						url(../img/poop.png) no-repeat center center
+	-webkit-transform 	  scale(1)
+  -webkit-transition 		all .4s
 
 div.poop.pooped
-	width 							30%
+	-webkit-transform 		scale(1.2)
+  -webkit-transition 		none
+  -webkit-animation     rumble .4s infinite
+  -moz-animation    		rumble .4s infinite
+  -ms-animation     		rumble .4s infinite
 
 h3
 	margin-bottom 					10px
