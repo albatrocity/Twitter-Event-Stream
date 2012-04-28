@@ -11,6 +11,9 @@ $ ->
 
 	all_fart_sounds = []
 
+	if (window.navigator.userAgent.match(/iPad/i) || window.navigator.userAgent.match(/iPhone/i))
+		file_type = 'mp3'
+
 	$('ul.all_fart_sounds').find('li').each ->
 		all_fart_sounds.push $(@).text()
 

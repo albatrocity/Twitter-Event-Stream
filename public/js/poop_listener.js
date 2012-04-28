@@ -11,6 +11,9 @@
     dom_audio = $('audio');
     dom_farters = $('.latest_farters').find('ul');
     all_fart_sounds = [];
+    if (window.navigator.userAgent.match(/iPad/i) || window.navigator.userAgent.match(/iPhone/i)) {
+      file_type = 'mp3';
+    }
     $('ul.all_fart_sounds').find('li').each(function() {
       return all_fart_sounds.push($(this).text());
     });
