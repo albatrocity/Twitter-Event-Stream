@@ -8,6 +8,10 @@ app        	= express.createServer()
 io			= require('socket.io').listen(app)
 port       	= process.env.PORT || 3001
 
+io.configure ->
+	io.set('transports', ['xhr-polling']); 
+	io.set('polling duration', 10); 
+
 app.use require('connect-assets')(src : 'public')
 
 app.configure ->
