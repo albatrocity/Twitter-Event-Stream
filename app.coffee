@@ -64,7 +64,7 @@ build_tweet_stream = (req, res, next) ->
 						client_data
 				###
 				#else
-				socket.broadcast.emit 'new_fart',
+				socket.emit 'new_fart',
 					client_data
 
 get_all_files = (req, res, next) ->
