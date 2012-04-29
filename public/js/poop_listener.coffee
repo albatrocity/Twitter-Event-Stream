@@ -8,6 +8,7 @@ $ ->
 
 	dom_audio 		= $('audio')
 	dom_farters 	= $('.latest_farters').find 'ul'
+	mascot				= $('.poop')
 
 	all_fart_sounds = []
 
@@ -41,6 +42,10 @@ $ ->
 		else
 			fart_sound = file_path + default_sound + '.' + file_type
 		###
+		mascot.addClass('pooped')
+		callback = -> mascot.removeClass('pooped')
+		setTimeout callback, 1000
+
 		dom_audio.empty()
 		dom_audio.append('<source src="' + fart_sound + '" type="audio/' + file_type + '" />')
 		dom_audio[0].play()
