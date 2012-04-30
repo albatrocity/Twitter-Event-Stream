@@ -35,7 +35,7 @@ div.charade{z-index:2;position:absolute;top:-50px;right:0;width:50%;height:200px
 div.charade.rotate{-webkit-animation:rotate 4s infinite;-moz-animation:rotate 4s infinite;-ms-animation:rotate 4s infinite}
 div.poop_wrapper{position:absolute;right:0;height:60%;width:30%;top:15%;right:12%}
 div.poop{position:absolute;width:100%;height:100%;background:url("../img/poop.png") no-repeat center center;-webkit-transform:scale(1.75);-webkit-transition:all .4s}
-div.poop.pooped{-webkit-transform:scale(2.5);-webkit-transition:none;-webkit-animation:rumble .4s infinite;-moz-animation:rumble .4s infinite;-ms-animation:rumble .4s infinite}
+div.poop.pooped{-webkit-transform:scale(3);-webkit-transition:none;-webkit-animation:rumble .4s infinite;-moz-animation:rumble .4s infinite;-ms-animation:rumble .4s infinite}
 h3{margin-bottom:10px}
 div.latest_farters{font-size:175%;}
 div.latest_farters ul{list-style-type:none;margin-left:0}

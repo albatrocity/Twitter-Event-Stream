@@ -65,8 +65,8 @@ build_tweet_stream = (req, res, next) ->
 						client_data
 				###
 				#else
-				#socket.emit 'new_fart',
-					#client_data
+				socket.emit 'new_fart',
+					client_data
 
 			stream.on 'end', (response) ->
 				#console.log 'ended'
