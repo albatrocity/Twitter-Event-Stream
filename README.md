@@ -10,3 +10,5 @@ It's possible to listen to your own farts only. Just visit the url fartcharade.c
 ## Specifying farts
 You can specify the kind of fart you'd like to hear. All you have to do is hash tag the sound file. I'll try to name these something more interesting when I have time. Sample:
 `God, I love farts. #fart-1`
+
+## FartCharade.herokuapp.com

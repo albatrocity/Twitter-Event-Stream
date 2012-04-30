@@ -25,7 +25,11 @@ $ ->
 
 	$('#sign_in').find('a').click ->
 		twat_val = $('#sign_in').find('input').val()
-		window.location.href = document.URL + twat_val
+		window.location.href = window.location.origin + '/' + twat_val
+
+	$('#wtf').find('a.sign_in')
+	$('#wtf').find('a.sign_in').click ->
+		$('#wtf').modal('hide')
 
 
 	build_fart = (data) ->
@@ -47,4 +51,4 @@ $ ->
 
 		dom_audio.empty()
 		dom_audio.append('<source src="' + fart_sound + '" type="audio/' + file_type + '" />')
-		#dom_audio[0].play()
+		dom_audio[0].play()

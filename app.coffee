@@ -43,7 +43,7 @@ build_tweet_stream = (req, res, next) ->
 		twat.stream 'statuses/filter',
 			track 	: 'fart'
 			follow 	: req.query.user
-		###
+		###		
 
 		twat.stream 'statuses/filter',
 			track 	: 'fart'
@@ -65,8 +65,16 @@ build_tweet_stream = (req, res, next) ->
 						client_data
 				###
 				#else
-				socket.emit 'new_fart',
-					client_data
+				#socket.emit 'new_fart',
+					#client_data
+
+			stream.on 'end', (response) ->
+				#console.log 'ended'
+				#console.log response
+
+			stream.on 'destroy', (response) ->
+				#console.log 'destroyed'
+				#console.log response
 
 get_all_files = (req, res, next) ->
 	fs.readdir "#{__dirname}/public/sounds", (err, all_files) ->

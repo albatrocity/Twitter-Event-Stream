@@ -26,7 +26,11 @@
     $('#sign_in').find('a').click(function() {
       var twat_val;
       twat_val = $('#sign_in').find('input').val();
-      return window.location.href = document.URL + twat_val;
+      return window.location.href = window.location.origin + '/' + twat_val;
+    });
+    $('#wtf').find('a.sign_in');
+    $('#wtf').find('a.sign_in').click(function() {
+      return $('#wtf').modal('hide');
     });
     return build_fart = function(data) {
       var callback, fart_sound, rand, template;
@@ -45,7 +49,8 @@
       };
       setTimeout(callback, 1000);
       dom_audio.empty();
-      return dom_audio.append('<source src="' + fart_sound + '" type="audio/' + file_type + '" />');
+      dom_audio.append('<source src="' + fart_sound + '" type="audio/' + file_type + '" />');
+      return dom_audio[0].play();
     };
   });
 
