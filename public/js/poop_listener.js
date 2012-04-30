@@ -45,8 +45,8 @@
       };
       setTimeout(callback, 1000);
       dom_audio.empty();
-      //dom_audio.append('<source src="' + fart_sound + '" type="audio/' + file_type + '" />');
-      //return dom_audio[0].play();
+      dom_audio.append('<source src="' + fart_sound + '" type="audio/' + file_type + '" />');
+      return dom_audio[0].play();
     };
   });
 
