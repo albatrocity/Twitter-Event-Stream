@@ -28,6 +28,9 @@
 }body{padding:5%;background-color:rgba(0,0,0,0.85)}
 header{overflow:visible;position:relative;height:100px;width:100%;margin-bottom:20px}
 h1{float:left;width:45%;height:100%;background:url("../img/fartcharade.png") no-repeat left center;-webkit-background-size:100% auto;text-indent:-999%}
+h2{width:50%;color:#fff;line-height:120%;margin-bottom:20px;}
+h2 a{color:#fcc954}
+h2 a:hover{color:#c4162f}
 div.charade{z-index:2;position:absolute;top:-50px;right:0;width:50%;height:200px;background:url("../img/charade.png") no-repeat right center;-webkit-background-size:auto 100%}
 div.charade.rotate{-webkit-animation:rotate 4s infinite;-moz-animation:rotate 4s infinite;-ms-animation:rotate 4s infinite}
 div.poop_wrapper{position:absolute;right:0;height:60%;width:30%;top:15%;right:12%}
@@ -45,3 +48,12 @@ div.latest_farters p{width:75%}
 ul.all_fart_sounds{display:none}
 audio{position:absolute;top:10;right:10;display:none;height:100px}
 .well{background-color:#fcc954}
+.modal{width:300px;padding:30px;background-color:#fcc954;margin-left:-200px;}
+.modal p{font-size:130%;line-height:140%}
+.modal h3{font-size:170%;color:#c4162f}
+.modal input{display:block;width:90%;padding:5%;font-size:150%;color:rgba(0,0,0,0.85)}
+a.wtf{color:#c4162f}
+a.wtf:hover{color:#5574cf}
+.fart_types{margin:0;list-style-type:none;}
+.fart_types li{line-height:140%;font-size:150%;margin:0 10px;display:inline}
+.fart_types li:first-child{margin-left:0}

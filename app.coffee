@@ -80,7 +80,7 @@ app.get '/', get_all_files, (req, res, next) ->
 	res.render 'index', files : req.sound_files
 
 app.get '/:user', get_all_files, build_tweet_stream, (req, res) ->
-	res.render 'index', files : req.sound_files
+	res.render 'user', files : req.sound_files
 
 build_tweet_stream()
 app.listen port

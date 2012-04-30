@@ -3,10 +3,11 @@
 $yellow 	= #fcc954
 $blue 		= #5574cf
 $red 		= #c4162f
+$gray 		= rgba(0,0,0,.85)
 
 body
 	padding						5%
-	background-color 			rgba(0,0,0,.85)
+	background-color 			$gray
 
 header
 	overflow 					visible
@@ -23,6 +24,15 @@ h1
 	-webkit-background-size		100% auto
 	text-indent					-999%
 
+h2
+	width 						50%
+	color 						#fff
+	line-height 				120%
+	margin-bottom 				20px
+	a
+		color 					$yellow
+	a:hover
+		color 					$red
 div.charade
 	z-index 					2
 	position 					absolute
@@ -106,3 +116,37 @@ audio
 
 .well
 	background-color 				$yellow
+
+.modal
+	width 							300px
+	padding 						30px
+	background-color 				$yellow
+	margin-left 					-200px
+	p
+		font-size 					130%
+		line-height					140%
+	h3
+		font-size 					170%
+		color 						$red
+	input
+		display 					block
+		width 						90%
+		padding 					5%
+		font-size 					150%
+		color 						$gray
+
+a.wtf 
+	color 							$red
+a.wtf:hover
+	color 							$blue
+
+.fart_types
+	margin 							0
+	list-style-type 				none
+	li
+		line-height					140%
+		font-size 					150%
+		margin 						0 10px
+		display 					inline
+	li:first-child
+		margin-left 				0

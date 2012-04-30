@@ -1,14 +1,12 @@
-audio(controls=true)
+!=partial('header')
 
-header
-	h1 Fart Charade!
-	div.charade.rotate
-		div.poop_wrapper
-			div.poop
+h2 This is funny, but I'd perfer to <a data-toggle='modal' href='#sign_in'>listen to my own farts</a>. <a data-toggle='modal' class='wtf' href='#wtf'>WTF?</a>
 
-div.well.latest_farters
-	ul
+!=partial('farters')
 
-ul.all_fart_sounds
-	each file in files
-		li= file
+#sign_in.modal.hide.fade
+	h3 Your Twitter Username Please:
+	input
+	a.btn.btn-primary.btn-large OK!
+
+!=partial('wtf')
