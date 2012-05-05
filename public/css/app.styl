@@ -8,6 +8,7 @@ $gray 		= rgba(0,0,0,.85)
 body
 	padding						5%
 	background-color 			$gray
+	overflow 					hidden
 
 header
 	overflow 					visible
@@ -22,6 +23,7 @@ h1
 	height 						100%
 	background 					url(../img/fartcharade.png) no-repeat left center
 	-webkit-background-size		100% auto
+	-moz-background-size		100% auto
 	text-indent					-999%
 
 h2
@@ -42,6 +44,7 @@ div.charade
 	height 						200px
 	background 					url(../img/charade.png) no-repeat right center
 	-webkit-background-size  	auto 100%
+	-moz-background-size  		auto 100%
 
 
 div.charade.rotate
@@ -65,6 +68,8 @@ div.poop
 	background 				url(../img/poop.png) no-repeat center center
 	-webkit-transform		scale(1.75)
 	-webkit-transition		all .4s
+	-moz-transform			scale(1.75)
+	-moz-transition			all .4s
 
 div.poop.pooped
 	-webkit-transform		scale(3)
@@ -86,7 +91,8 @@ div.latest_farters
 		margin-bottom 				15px
 		line-height 				130%
 		background-color 			$red
-		-webkit-border-radius 		5px 
+		-webkit-border-radius 		5px
+		-moz-border-radius 			5px
 		padding 					10px
 		color 						#fff
 		a
@@ -95,12 +101,15 @@ div.latest_farters
 		background-color 			$blue
 		a
 			color 					$yellow
+
 	img
 		margin-right 				15px
 		float 						left
 		width 						20%
 		height 						auto
 		-webkit-border-radius 		5px 
+		-moz-border-radius 			5px
+		border-radius 				5px
 	p
 		width 						75%
 
@@ -109,13 +118,18 @@ ul.all_fart_sounds
 
 audio
 	position 						absolute
-	top 							10
-	right 							10
+	left 	 						-9999px
+	top								-9999px
 	display 						none
-	height 							100px
 
 .well
+	overflow 						hidden
 	background-color 				$yellow
+	ul
+		overflow 					hidden
+
+#ios-ok
+	margin-right 					30px
 
 .modal
 	width 							300px

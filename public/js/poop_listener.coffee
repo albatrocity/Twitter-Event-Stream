@@ -13,21 +13,25 @@ $ ->
 
 	if (window.navigator.userAgent.match(/iPad/i) || window.navigator.userAgent.match(/iPhone/i))
 		file_type = 'mp3'
+		$('#ios').modal('show')
+		$('#ios-ok').click ->
+			dom_audio[0].play()
+			$('#ios').modal('hide')
 
 	$('ul.all_fart_sounds').find('li').each ->
 		all_fart_sounds.push $(@).text()
 
-	socket.on 'new_fart', (data) ->
-		build_fart data
-
-	socket.on 'my_fart', (data) ->
-		build_fart data
+	if $('.is_personal').length
+		socket.on 'my_fart', (data) ->
+			build_fart data
+	else
+		socket.on 'new_fart', (data) ->
+			build_fart data
 
 	$('#sign_in').find('a').click ->
 		twat_val = $('#sign_in').find('input').val()
 		window.location.href = window.location.origin + '/' + twat_val
 
-	$('#wtf').find('a.sign_in')
 	$('#wtf').find('a.sign_in').click ->
 		$('#wtf').modal('hide')
 

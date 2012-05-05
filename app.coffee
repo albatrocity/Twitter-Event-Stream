@@ -11,11 +11,12 @@ port       	= process.env.PORT || 3001
 io.configure ->
 	io.set('transports', ['xhr-polling']); 
 	io.set('polling duration', 10); 
+	io.set('log level', 1)
 
 app.use require('connect-assets')(src : 'public')
 
 app.configure ->
-	app.use express.logger format: ':method :url :status'
+	#app.use express.logger format: ':method :url :status'
 	app.use express.static path.join __dirname, 'public'
 	app.use stylus.middleware
 		debug: true
@@ -31,19 +32,19 @@ twat = new twitter
 	access_token_key	: process.env.TWITTERACCESSTOKEN
 	access_token_secret	: process.env.TWITTERACCESSTOKENSECRET
 
+get_user_id = (req, res, next) ->
+	twat.showUser req.params.user, (err, data) ->
+		req.user_id = data[0].id
+		next()
 
 build_tweet_stream = (req, res, next) ->
+	track_term 	= 'fart'
+	user_id 	= [0]
+	if req
+		next()
+		if req.user_id then user_id = [req.user_id]
 
-	if req then next()
-	
 	io.sockets.on 'connection', (socket) ->
-
-		###
-		This should work, but it doesn't :(
-		twat.stream 'statuses/filter',
-			track 	: 'fart'
-			follow 	: req.query.user
-		###		
 
 		twat.stream 'statuses/filter',
 			track 	: 'fart'
@@ -51,7 +52,7 @@ build_tweet_stream = (req, res, next) ->
 			stream.on 'data', (data) ->
 				client_data = {
 					content : data.text
-					img 	: data.user.profile_image_url_https
+					img 	: data.user.profile_image_url
 					user 	: data.user.screen_name
 					tags 	: []
 				}
@@ -59,22 +60,21 @@ build_tweet_stream = (req, res, next) ->
 				client_data.content.replace /[#]+[A-Za-z0-9-_]+/g, (tag) ->
 					client_data.tags.push tag.replace('#', '')
 
-				###
+				console.log client_data.content
+
 				if req
-					socket.broadcast.emit 'my_fart',
+					socket.emit 'my_fart',
 						client_data
-				###
-				#else
-				socket.emit 'new_fart',
-					client_data
+				else
+					socket.emit 'new_fart',
+						client_data
 
 			stream.on 'end', (response) ->
-				#console.log 'ended'
 				#console.log response
 
 			stream.on 'destroy', (response) ->
-				#console.log 'destroyed'
 				#console.log response
+
 
 get_all_files = (req, res, next) ->
 	fs.readdir "#{__dirname}/public/sounds", (err, all_files) ->
@@ -87,7 +87,7 @@ get_all_files = (req, res, next) ->
 app.get '/', get_all_files, (req, res, next) ->
 	res.render 'index', files : req.sound_files
 
-app.get '/:user', get_all_files, build_tweet_stream, (req, res) ->
+app.get '/:user', get_all_files, get_user_id, build_tweet_stream, (req, res) ->
 	res.render 'user', files : req.sound_files
 
 build_tweet_stream()

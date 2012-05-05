@@ -13,22 +13,29 @@
     all_fart_sounds = [];
     if (window.navigator.userAgent.match(/iPad/i) || window.navigator.userAgent.match(/iPhone/i)) {
       file_type = 'mp3';
+      $('#ios').modal('show');
+      $('#ios-ok').click(function() {
+        dom_audio[0].play();
+        return $('#ios').modal('hide');
+      });
     }
     $('ul.all_fart_sounds').find('li').each(function() {
       return all_fart_sounds.push($(this).text());
     });
-    socket.on('new_fart', function(data) {
-      return build_fart(data);
-    });
-    socket.on('my_fart', function(data) {
-      return build_fart(data);
-    });
+    if ($('.is_personal').length) {
+      socket.on('my_fart', function(data) {
+        return build_fart(data);
+      });
+    } else {
+      socket.on('new_fart', function(data) {
+        return build_fart(data);
+      });
+    }
     $('#sign_in').find('a').click(function() {
       var twat_val;
       twat_val = $('#sign_in').find('input').val();
       return window.location.href = window.location.origin + '/' + twat_val;
     });
-    $('#wtf').find('a.sign_in');
     $('#wtf').find('a.sign_in').click(function() {
       return $('#wtf').modal('hide');
     });
