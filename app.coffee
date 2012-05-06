@@ -37,19 +37,27 @@ get_user_id = (req, res, next) ->
 		req.user_id = data[0].id
 		next()
 
+reakt = (stream, req) ->
+
+
 build_tweet_stream = (req, res, next) ->
-	track_term 	= 'fart'
-	user_id 	= [0]
+	
+	follow_term 	= 'fart'
+	user_id 		= [0]
+
 	if req
-		next()
-		if req.user_id then user_id = [req.user_id]
+		if req.user_id
+			follow_term = 'fartcharade'
+			user_id 	= [req.user_id]
+			next()
 
 	io.sockets.on 'connection', (socket) ->
-
 		twat.stream 'statuses/filter',
-			track 	: 'fart'
+			track 	: follow_term
+			follow  : user_id
 		, (stream) ->
 			stream.on 'data', (data) ->
+
 				client_data = {
 					content : data.text
 					img 	: data.user.profile_image_url
@@ -68,13 +76,6 @@ build_tweet_stream = (req, res, next) ->
 				else
 					socket.emit 'new_fart',
 						client_data
-
-			stream.on 'end', (response) ->
-				#console.log response
-
-			stream.on 'destroy', (response) ->
-				#console.log response
-
 
 get_all_files = (req, res, next) ->
 	fs.readdir "#{__dirname}/public/sounds", (err, all_files) ->
