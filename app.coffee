@@ -34,10 +34,11 @@ twat = new twitter
 
 get_user_id = (req, res, next) ->
 	twat.showUser req.params.user, (err, data) ->
-		req.user_id = data[0].id
-		next()
-
-reakt = (stream, req) ->
+		if err
+			res.render 'notfound', files : req.sound_files
+		else
+			req.user_id = data[0].id
+			next()
 
 
 build_tweet_stream = (req, res, next) ->

@@ -1,4 +1,4 @@
-# FartCharade :poop:
+# :poop: :poop: :poop: FartCharade :poop: :poop: :poop:
 
 ## Instantaneous Farts, non-stop, all the time!
 Hosted at Heroku [FartCharade.herokuapp.com](http://fartcharade.herokuapp.com)
