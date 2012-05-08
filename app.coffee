@@ -69,8 +69,6 @@ build_tweet_stream = (req, res, next) ->
 				client_data.content.replace /[#]+[A-Za-z0-9-_]+/g, (tag) ->
 					client_data.tags.push tag.replace('#', '')
 
-				console.log client_data.content
-
 				if req
 					socket.emit 'my_fart',
 						client_data
@@ -80,9 +78,10 @@ build_tweet_stream = (req, res, next) ->
 
 get_all_files = (req, res, next) ->
 	fs.readdir "#{__dirname}/public/sounds", (err, all_files) ->
-		sound_files = []	
+		sound_files = []
 		for file in all_files
-			sound_files.push(file.substring(0, file.lastIndexOf('.')))
+			if file != '.DS_Store'
+				sound_files.push(file.substring(0, file.lastIndexOf('.')))
 		req.sound_files = sound_files
 		next()
 

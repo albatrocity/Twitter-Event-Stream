@@ -1,6 +1,11 @@
 !=partial('header')
 
 h2 This is funny, but I'd perfer to <a data-toggle='modal' href='#sign_in'>listen to my own farts</a>. <a data-toggle='modal' class='wtf' href='#wtf'>WTF?</a>
+ul.list_tags
+	each file, i in files
+		if i%2 == 0
+			li
+				##{file}
 
 !=partial('farters')
 
