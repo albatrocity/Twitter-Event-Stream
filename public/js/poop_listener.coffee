@@ -20,7 +20,7 @@ $ ->
 
 	$('ul.all_fart_sounds').find('li').each ->
 		all_fart_sounds.push $(@).text()
-
+	
 	if $('.is_personal').length
 		socket.on 'my_fart', (data) ->
 			build_fart data
@@ -36,16 +36,17 @@ $ ->
 		$('#wtf').modal('hide')
 
 
-	build_fart = (data) ->
+	window.build_fart = (data) ->
 
 		template = "<li><a target='_blank' href='http://twitter.com/#{data.user}'><img src='#{data.img}' alt='@#{data.user}' /></a><a target='_blank' href='http://twitter.com/#{data.user}'>@#{data.user}</a> : #{data.content}</li>"
 		dom_farters.prepend template
 
 		fart_sound = ''
 
-		if $.inArray(data.tags[0], all_fart_sounds) != -1
-			fart_sound 	= file_path + data.sound + '.' + file_type
-		else
+		for sound in all_fart_sounds
+			if data.tags[0].toLowerCase() == sound.toLowerCase()
+				fart_sound 	= file_path + sound + '.' + file_type	
+		if fart_sound == ''
 			rand 		= Math.floor ( Math.random() * all_fart_sounds.length );
 			fart_sound 	= file_path + all_fart_sounds[rand] + '.' + file_type
 

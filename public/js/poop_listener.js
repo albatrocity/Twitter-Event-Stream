@@ -4,7 +4,7 @@
   socket = io.connect('/');
 
   $(function() {
-    var all_fart_sounds, build_fart, dom_audio, dom_farters, file_path, file_type, mascot;
+    var all_fart_sounds, dom_audio, dom_farters, file_path, file_type, mascot;
     file_type = 'wav';
     file_path = '/sounds/';
     dom_audio = $('audio');
@@ -39,14 +39,18 @@
     $('#wtf').find('a.sign_in').click(function() {
       return $('#wtf').modal('hide');
     });
-    return build_fart = function(data) {
-      var callback, fart_sound, rand, template;
+    return window.build_fart = function(data) {
+      var callback, fart_sound, rand, sound, template, _i, _len;
       template = "<li><a target='_blank' href='http://twitter.com/" + data.user + "'><img src='" + data.img + "' alt='@" + data.user + "' /></a><a target='_blank' href='http://twitter.com/" + data.user + "'>@" + data.user + "</a> : " + data.content + "</li>";
       dom_farters.prepend(template);
       fart_sound = '';
-      if ($.inArray(data.tags[0], all_fart_sounds) !== -1) {
-        fart_sound = file_path + data.sound + '.' + file_type;
-      } else {
+      for (_i = 0, _len = all_fart_sounds.length; _i < _len; _i++) {
+        sound = all_fart_sounds[_i];
+        if (data.tags[0].toLowerCase() === sound.toLowerCase()) {
+          fart_sound = file_path + sound + '.' + file_type;
+        }
+      }
+      if (fart_sound === '') {
         rand = Math.floor(Math.random() * all_fart_sounds.length);
         fart_sound = file_path + all_fart_sounds[rand] + '.' + file_type;
       }
