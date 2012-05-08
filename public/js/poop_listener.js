@@ -46,8 +46,10 @@
       fart_sound = '';
       for (_i = 0, _len = all_fart_sounds.length; _i < _len; _i++) {
         sound = all_fart_sounds[_i];
-        if (data.tags[0].toLowerCase() === sound.toLowerCase()) {
-          fart_sound = file_path + sound + '.' + file_type;
+        if (data.tags[0]) {
+          if (data.tags[0].toLowerCase() === sound.toLowerCase()) {
+            fart_sound = file_path + sound + '.' + file_type;
+          }
         }
       }
       if (fart_sound === '') {

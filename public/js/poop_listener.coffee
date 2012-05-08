@@ -44,8 +44,9 @@ $ ->
 		fart_sound = ''
 
 		for sound in all_fart_sounds
-			if data.tags[0].toLowerCase() == sound.toLowerCase()
-				fart_sound 	= file_path + sound + '.' + file_type	
+			if data.tags[0]
+				if data.tags[0].toLowerCase() == sound.toLowerCase()
+					fart_sound 	= file_path + sound + '.' + file_type	
 		if fart_sound == ''
 			rand 		= Math.floor ( Math.random() * all_fart_sounds.length );
 			fart_sound 	= file_path + all_fart_sounds[rand] + '.' + file_type
