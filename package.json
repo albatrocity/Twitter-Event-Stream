@@ -12,6 +12,7 @@
       "stylus"            	: "v0.22.5",
       "connect-assets"    	: "v2.1.9",
       "socket.io"   		  	: "v0.9.0",
-      "ntwitter"		 		: "v0.3.0"
+      "ntwitter"		 		: "v0.3.0",
+      "twitter-text"       : "v1.4.16"
 	}
 }
