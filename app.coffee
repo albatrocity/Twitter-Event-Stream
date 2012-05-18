@@ -42,7 +42,7 @@ build_tweet_stream = (req, res, next) ->
 
 	if req
 		if req.user_id
-			follow_term = 'fartcharade'
+			follow_term = 'crabs'
 			user_id 	= [req.user_id]
 			next()
 

@@ -3,7 +3,6 @@ socket = io.connect('/')
 $ ->
 
 	participants = $('.participants').find 'ul'
-	mascot       = $('.poop')
 
 	
 	if $('.is_personal').length
@@ -18,5 +17,3 @@ $ ->
 
 		template = "<li><a target='_blank' href='http://twitter.com/#{data.user}'><img src='#{data.img}' alt='@#{data.user}' /></a><a target='_blank' href='http://twitter.com/#{data.user}'>@#{data.user}</a> : #{data.content}</li>"
 		participants.prepend template
-
-		fart_sound = ''

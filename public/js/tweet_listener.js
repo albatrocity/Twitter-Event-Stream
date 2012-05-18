@@ -5,7 +5,7 @@
 
   $(function() {
     var mascot, participants;
-    participants = $('.latest_farters').find('ul');
+    participants = $('.participants').find('ul');
     mascot = $('.poop');
     if ($('.is_personal').length) {
       socket.on('my_tweet', function(data) {
